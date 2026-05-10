@@ -180,30 +180,7 @@ The APK will be at: `build/app/outputs/flutter-apk/app-release.apk`
 | intl               | Date formatting                |
 | uuid               | Unique task IDs                |
 
----
-
-## 📊 Evaluation Criteria Coverage
-
-| Criteria                          | Marks | Implementation                                  |
-|-----------------------------------|-------|-------------------------------------------------|
-| Flutter UI & Navigation           | 20    | Named screens, hero animations, clean design    |
-| Firebase Authentication           | 20    | Sign up, login, logout, session persistence     |
-| Firestore CRUD Operations         | 25    | Add, edit, delete, toggle complete, streams     |
-| REST API Integration              | 10    | quotable.io random quote with error handling    |
-| Code Structure & Clean Code       | 15    | MVC-like structure, reusable widgets, services  |
-| App Performance & Error Handling  | 10    | Loading states, snackbars, try/catch everywhere |
-| **Total**                         | **100**|                                                |
-
----
-
-## 📸 Screenshots
-
-> Add screenshots here after running the app.
-
----
-
 ## 👤 Author
 
 **Kartik**  
 IIT Jodhpur  
-Flutter Development Internship Assignment — Sankar Group
