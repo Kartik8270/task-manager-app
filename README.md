@@ -10,14 +10,8 @@
 
 > A clean, fully-featured **Task Manager** mobile app built with Flutter, Firebase Authentication, Cloud Firestore, and REST API integration. Submitted as part of the **Sankar Group Flutter Development Internship Assignment**.
 a
----
-
-## 📱 Screenshots
-
-> _Add screenshots here after recording your demo_
-
----
-
+--
+> 
 ## ✨ Features
 
 ### 🔐 User Authentication (Firebase Auth)
