@@ -312,17 +312,43 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => const AddEditTaskScreen()),
-        ),
-        icon: const Icon(Icons.add_rounded),
-        label: const Text(
-          'Add Task',
-          style: TextStyle(fontWeight: FontWeight.w600),
-        ),
-      ).animate().scale(delay: 600.ms),
+ 
+  floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+
+ floatingActionButton: Padding(
+  padding: const EdgeInsets.only(right: 16, bottom: 16),
+  child: ElevatedButton.icon(
+    onPressed: () => Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const AddEditTaskScreen(),
+      ),
+    ),
+    icon: const Icon(Icons.add_rounded, color: Colors.white),
+    label: const Text(
+      'Add Task',
+      style: TextStyle(
+        fontWeight: FontWeight.w600,
+        fontSize: 16,
+        color: Colors.white,
+      ),
+    ),
+    style: ElevatedButton.styleFrom(
+      backgroundColor: AppTheme.primaryColor,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 14,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+    ),
+  ).animate().scale(
+        delay: 600.ms,
+        alignment: Alignment.center,
+      ),
+),
+       
     );
   }
 }

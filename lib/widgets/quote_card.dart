@@ -2,26 +2,26 @@ import 'package:flutter/material.dart';
 import '../models/quote_model.dart';
 import '../services/quote_service.dart';
 import '../utils/app_theme.dart';
-
+ 
 class QuoteCard extends StatefulWidget {
   const QuoteCard({super.key});
-
+ 
   @override
   State<QuoteCard> createState() => _QuoteCardState();
 }
-
+ 
 class _QuoteCardState extends State<QuoteCard> {
   final QuoteService _quoteService = QuoteService();
   QuoteModel? _quote;
   bool _isLoading = true;
   String? _error;
-
+ 
   @override
   void initState() {
     super.initState();
     _loadQuote();
   }
-
+ 
   Future<void> _loadQuote() async {
     setState(() {
       _isLoading = true;
@@ -36,7 +36,7 @@ class _QuoteCardState extends State<QuoteCard> {
       if (mounted) setState(() => _isLoading = false);
     }
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,7 +71,8 @@ class _QuoteCardState extends State<QuoteCard> {
           : _error != null
               ? Column(
                   children: [
-                    const Icon(Icons.wifi_off_rounded, color: Colors.white70, size: 28),
+                    const Icon(Icons.wifi_off_rounded,
+                        color: Colors.white70, size: 28),
                     const SizedBox(height: 8),
                     const Text(
                       'Could not load quote',
@@ -81,7 +82,8 @@ class _QuoteCardState extends State<QuoteCard> {
                       onPressed: _loadQuote,
                       child: const Text(
                         'Retry',
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
@@ -94,7 +96,8 @@ class _QuoteCardState extends State<QuoteCard> {
                       children: [
                         const Row(
                           children: [
-                            Icon(Icons.format_quote, color: Colors.white70, size: 20),
+                            Icon(Icons.format_quote_rounded,
+                                color: Colors.white70, size: 20),
                             SizedBox(width: 6),
                             Text(
                               'Daily Inspiration',
@@ -142,3 +145,4 @@ class _QuoteCardState extends State<QuoteCard> {
     );
   }
 }
+ 

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
+ 
 class AppTheme {
-  // Color Palette
   static const Color primaryColor = Color(0xFF6C63FF);
   static const Color secondaryColor = Color(0xFF4ECDC4);
   static const Color accentColor = Color(0xFFFF6584);
@@ -13,7 +11,7 @@ class AppTheme {
   static const Color successColor = Color(0xFF4CAF50);
   static const Color warningColor = Color(0xFFFFC107);
   static const Color errorColor = Color(0xFFE53935);
-
+ 
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
@@ -26,37 +24,37 @@ class AppTheme {
         error: errorColor,
       ),
       scaffoldBackgroundColor: backgroundColor,
-      textTheme: GoogleFonts.poppinsTextTheme().copyWith(
-        displayLarge: GoogleFonts.poppins(
+      textTheme: const TextTheme().copyWith(
+        displayLarge: const TextStyle(
           fontSize: 32,
           fontWeight: FontWeight.bold,
           color: textPrimary,
         ),
-        headlineMedium: GoogleFonts.poppins(
+        headlineMedium: const TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.w600,
           color: textPrimary,
         ),
-        titleLarge: GoogleFonts.poppins(
+        titleLarge: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w600,
           color: textPrimary,
         ),
-        bodyLarge: GoogleFonts.poppins(
+        bodyLarge: const TextStyle(
           fontSize: 16,
           color: textPrimary,
         ),
-        bodyMedium: GoogleFonts.poppins(
+        bodyMedium: const TextStyle(
           fontSize: 14,
           color: textSecondary,
         ),
       ),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: false,
-        iconTheme: const IconThemeData(color: textPrimary),
-        titleTextStyle: GoogleFonts.poppins(
+        iconTheme: IconThemeData(color: textPrimary),
+        titleTextStyle: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: textPrimary,
@@ -71,7 +69,7 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),
           ),
-          textStyle: GoogleFonts.poppins(
+          textStyle: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
@@ -101,9 +99,9 @@ class AppTheme {
           borderRadius: BorderRadius.circular(14),
           borderSide: const BorderSide(color: errorColor, width: 2),
         ),
-        hintStyle: GoogleFonts.poppins(color: textSecondary, fontSize: 14),
-        labelStyle: GoogleFonts.poppins(color: textSecondary, fontSize: 14),
-        errorStyle: GoogleFonts.poppins(color: errorColor, fontSize: 12),
+        hintStyle: const TextStyle(color: textSecondary, fontSize: 14),
+        labelStyle: const TextStyle(color: textSecondary, fontSize: 14),
+        errorStyle: const TextStyle(color: errorColor, fontSize: 12),
       ),
       cardTheme: CardThemeData(
         color: cardColor,
@@ -125,3 +123,4 @@ class AppTheme {
     );
   }
 }
+ 

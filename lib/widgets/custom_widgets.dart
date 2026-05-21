@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/app_theme.dart';
-
-// ─── Custom Text Field ───────────────────────────────────────────────────────
+ 
 class CustomTextField extends StatefulWidget {
   final String label;
   final String hint;
@@ -12,7 +11,7 @@ class CustomTextField extends StatefulWidget {
   final int maxLines;
   final Widget? prefixIcon;
   final TextInputAction textInputAction;
-
+ 
   const CustomTextField({
     super.key,
     required this.label,
@@ -25,50 +24,56 @@ class CustomTextField extends StatefulWidget {
     this.prefixIcon,
     this.textInputAction = TextInputAction.next,
   });
-
+ 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
-
+ 
 class _CustomTextFieldState extends State<CustomTextField> {
   bool _obscureText = true;
-
+ 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
       obscureText: widget.isPassword && _obscureText,
-      keyboardType: widget.keyboardType,
+      keyboardType: widget.isPassword
+          ? TextInputType.visiblePassword
+          : (widget.maxLines > 1 ? TextInputType.multiline : widget.keyboardType),
       validator: widget.validator,
       maxLines: widget.isPassword ? 1 : widget.maxLines,
-      textInputAction: widget.textInputAction,
-      style: Theme.of(context).textTheme.bodyLarge,
+      textInputAction: widget.maxLines > 1
+          ? TextInputAction.newline
+          : widget.textInputAction,
+      style: const TextStyle(fontSize: 16, color: AppTheme.textPrimary),
       decoration: InputDecoration(
-        labelText: widget.label,
+        labelText: widget.label.isEmpty ? null : widget.label,
         hintText: widget.hint,
         prefixIcon: widget.prefixIcon,
         suffixIcon: widget.isPassword
             ? IconButton(
                 icon: Icon(
-                  _obscureText ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                  _obscureText
+                      ? Icons.visibility_off_outlined
+                      : Icons.visibility_outlined,
                   color: AppTheme.textSecondary,
                 ),
-                onPressed: () => setState(() => _obscureText = !_obscureText),
+                onPressed: () =>
+                    setState(() => _obscureText = !_obscureText),
               )
             : null,
       ),
     );
   }
 }
-
-// ─── Primary Button ──────────────────────────────────────────────────────────
+ 
 class PrimaryButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
   final bool isLoading;
   final double? width;
   final IconData? icon;
-
+ 
   const PrimaryButton({
     super.key,
     required this.text,
@@ -77,7 +82,7 @@ class PrimaryButton extends StatelessWidget {
     this.width,
     this.icon,
   });
-
+ 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -107,13 +112,12 @@ class PrimaryButton extends StatelessWidget {
     );
   }
 }
-
-// ─── Task Status Badge ───────────────────────────────────────────────────────
+ 
 class StatusBadge extends StatelessWidget {
   final bool isCompleted;
-
+ 
   const StatusBadge({super.key, required this.isCompleted});
-
+ 
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -132,7 +136,9 @@ class StatusBadge extends StatelessWidget {
             height: 6,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: isCompleted ? AppTheme.successColor : AppTheme.warningColor,
+              color: isCompleted
+                  ? AppTheme.successColor
+                  : AppTheme.warningColor,
             ),
           ),
           const SizedBox(width: 6),
@@ -141,7 +147,9 @@ class StatusBadge extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w600,
-              color: isCompleted ? AppTheme.successColor : AppTheme.warningColor,
+              color: isCompleted
+                  ? AppTheme.successColor
+                  : AppTheme.warningColor,
             ),
           ),
         ],
@@ -149,20 +157,19 @@ class StatusBadge extends StatelessWidget {
     );
   }
 }
-
-// ─── Empty State Widget ──────────────────────────────────────────────────────
+ 
 class EmptyStateWidget extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData icon;
-
+ 
   const EmptyStateWidget({
     super.key,
     required this.title,
     required this.subtitle,
     required this.icon,
   });
-
+ 
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -185,9 +192,7 @@ class EmptyStateWidget extends StatelessWidget {
           const SizedBox(height: 24),
           Text(
             title,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: AppTheme.textPrimary,
-                ),
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: 8),
           Text(
@@ -200,18 +205,17 @@ class EmptyStateWidget extends StatelessWidget {
     );
   }
 }
-
-// ─── Loading Overlay ─────────────────────────────────────────────────────────
+ 
 class LoadingOverlay extends StatelessWidget {
   final bool isLoading;
   final Widget child;
-
+ 
   const LoadingOverlay({
     super.key,
     required this.isLoading,
     required this.child,
   });
-
+ 
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -230,3 +234,4 @@ class LoadingOverlay extends StatelessWidget {
     );
   }
 }
+ 
